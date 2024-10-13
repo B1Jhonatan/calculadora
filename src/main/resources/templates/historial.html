@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Historial</title>
+    <link href="Styles/estilos.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<center>
+    <h1>CALCULADORA DE OBRA</h1>
+    <div>
+        <form method="post" action="/redirigir">
+            <button type="submit" name="accion" value="cuadrado" class="boton">Cuadrado</button>
+            <button type="submit" name="accion" value="cubico" class="boton">Cubico</button>
+            <button type="submit" name="accion" value="historial" class="boton">Historial</button>
+        </form>
+    </div>
+    <div>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>LARGO</th>
+                <th>ANCHO</th>
+                <th>ALTO</th>
+                <th>CANTIDAD</th>
+                <th>AREA</th>
+            </tr>
+            <tr th:each="figuras : ${listaFiguras}">
+                <td th:text="${figuras.id}"></td>
+                <td th:text="${figuras.largo}"></td>
+                <td th:text="${figuras.ancho}"></td>
+                <td th:text="${figuras.alto}"></td>
+                <td th:text="${figuras.cantidad}"></td>
+                <td th:text="${figuras.resultado}"></td>
+                <td>Editar</td>
+                <td>Eliminar</td>
+            </tr>
+        </table>
+    </div>
+</center>
+</body>
+</html>
