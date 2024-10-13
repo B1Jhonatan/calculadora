@@ -1,4 +1,4 @@
-package com.jaimes.calculadora.app.models.interfaces;
+package com.jaimes.calculadora.app.repository;
 
 import com.jaimes.calculadora.app.models.Figura;
 import org.springframework.data.jpa.repository.JpaRepository;

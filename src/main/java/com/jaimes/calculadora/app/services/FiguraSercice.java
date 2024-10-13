@@ -1,7 +1,7 @@
 package com.jaimes.calculadora.app.services;
 
 import com.jaimes.calculadora.app.models.Figura;
-import com.jaimes.calculadora.app.models.interfaces.FiguraRepository;
+import com.jaimes.calculadora.app.repository.FiguraRepository;
 import com.jaimes.calculadora.app.services.implement.FiguraService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
