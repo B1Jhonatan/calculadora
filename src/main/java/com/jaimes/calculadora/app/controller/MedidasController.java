@@ -7,54 +7,59 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class MedidasController {
 
     @Autowired
-    FiguraRepository figuraRepository;
+    private FiguraRepository figuraRepository;
 
     @Autowired
-    FiguraService figuraService;
+    private FiguraService figuraService;
 
-    Figura figura = new Figura();
-
+    // GET: Mostrar formulario de cálculo cúbico
     @GetMapping("/cubico")
-    public String cubicoController(){
+    public String cubicoController(Model model) {
+        // Se pasa una nueva instancia de Figura para el formulario
+        model.addAttribute("medidas", new Figura());
+        model.addAttribute("accion", "/cubico");
         return "cubico";
     }
 
+    // GET: Mostrar formulario de cálculo cuadrado
     @GetMapping("/cuadrado")
-    public String cuadradoController(){
+    public String cuadradoController(Model model) {
+        model.addAttribute("medidas", new Figura());
         return "cuadrado";
     }
 
+    // POST: Procesar formulario para figura cuadrada
     @PostMapping("/cuadrado")
-    public String Cuadrado(double largo, double ancho, int cantidad, Model model){
+    public String Cuadrado(@ModelAttribute Figura medidas, Model model) {
+        double resultado = medidas.calcular();
 
-        double resultado;
-        figura.Medidas(largo, ancho, cantidad);
+        // Guarda la figura
+        figuraService.crearFigura(medidas);
 
-        figuraService.crearFigura(figura);
-
-        resultado = figura.calcular();
+        // Añadir el resultado al modelo
         model.addAttribute("resultado", resultado);
-
+        model.addAttribute("accion", "/cuadrado");
         return "cuadrado";
     }
 
+    // POST: Procesar formulario para figura cúbica
     @PostMapping("/cubico")
-    public String Cubico(double largo, double ancho, double alto, int cantidad, Model model){
-
-        double resultado;
-        figura.Medidas(largo, ancho, alto, cantidad);
-
-        figuraService.crearFigura(figura);
-
-        resultado = figura.calcular();
+    public String Cubico(@ModelAttribute Figura medidas, Model model) {
+        double resultado = medidas.calcular();
+        // Guarda la figura
+        figuraService.crearFigura(medidas);
+        // Añadir el resultado al modelo
         model.addAttribute("resultado", resultado);
-
+        model.addAttribute("accion", "/cubico");
         return "cubico";
     }
+
 }

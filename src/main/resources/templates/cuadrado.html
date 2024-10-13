@@ -16,7 +16,8 @@
         </form>
     </div>
     <div>
-        <form method="post" th:object="${medidas}" action="/cuadrado">
+        <form method="post" th:object="${medidas}" th:action="${accion}">
+            <input type="hidden" name="id">
             <label for="largo">Largo</label>
             <br>
             <input type="text" id="largo" name="largo">
@@ -33,7 +34,7 @@
             <input type="submit" value="Resultado" class="boton">
         </form>
         <label for="resultado">Resultado: </label>
-        <label th:text="${resultado}" id="resultado"></label>
+        <label th:text="${resultado}" id="resultado" th:action="${resultado}"></label>
     </div>
 </center>
 </body>

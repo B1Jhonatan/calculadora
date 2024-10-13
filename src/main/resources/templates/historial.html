@@ -33,8 +33,11 @@
                 <td th:text="${figuras.alto}"></td>
                 <td th:text="${figuras.cantidad}"></td>
                 <td th:text="${figuras.resultado}"></td>
-                <td>Editar</td>
-                <td>Eliminar</td>
+                <td>
+                    <a th:href="@{/historial/editar/{id}(id=${figuras.id})}">Editar</a>
+                    <a th:href="@{/historial/eliminar/{id}(id=${figuras.id})}">Eliminar</a>
+                </td>
+
             </tr>
         </table>
     </div>

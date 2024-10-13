@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Area Cubica</title>
+    <title>Área Cúbica</title>
     <link href="Styles/estilos.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -11,33 +11,41 @@
     <div>
         <form method="post" action="/redirigir">
             <button type="submit" name="accion" value="cuadrado" class="boton">Cuadrado</button>
-            <button type="submit" name="accion" value="cubico" class="boton">Cubico</button>
+            <button type="submit" name="accion" value="cubico" class="boton">Cúbico</button>
             <button type="submit" name="accion" value="historial" class="boton">Historial</button>
         </form>
     </div>
     <div class="botones">
-        <form method="post" th:object="${medidas}" action="/cubico">
+        <form method="post" th:object="${medidas}" th:action="${accion}">
+            <input type="hidden" name="id">
+
             <label for="largo">Largo</label>
             <br>
             <input type="text" id="largo" name="largo">
             <br>
+
             <label for="ancho">Ancho</label>
             <br>
             <input type="text" id="ancho" name="ancho">
             <br>
+
             <label for="alto">Alto</label>
             <br>
             <input type="text" id="alto" name="alto">
             <br>
+
             <label for="cantidad">Cantidad</label>
             <br>
             <input type="text" id="cantidad" name="cantidad">
             <br>
+
             <br>
             <input type="submit" value="Resultado" class="boton">
         </form>
+
+        <!-- Mostrar el resultado, si está disponible -->
         <label for="resultado">Resultado: </label>
-        <label th:text="${resultado}" id="resultado"></label>
+        <label th:text="${resultado}" id="resultado" th:action="${resultado}"></label>
     </div>
 </center>
 </body>

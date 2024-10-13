@@ -27,60 +27,25 @@ public class Figura implements ICalcular {
     private int cantidad;
     private double resultado;
 
-    public Figura Medidas(double largo, double ancho) {
-
-        this.largo = largo;
-        this.ancho = ancho;
-        this.resultado = calcular();
-        return this;
-
-    }
-
-    public Figura Medidas(double largo, double ancho, double alto) {
-
-        this.largo = largo;
-        this.ancho = ancho;
-        this.alto = alto;
-        this.resultado = calcular();
-        return this;
-
-    }
-
-    public Figura Medidas(double largo, double ancho, int cantidad) {
-
-        this.largo = largo;
-        this.ancho = ancho;
-        this.cantidad = cantidad;
-        this.resultado = calcular();
-        return this;
-
-    }
-
-    public Figura Medidas(double largo, double ancho, double alto, int cantidad) {
-
-        this.largo = largo;
-        this.ancho = ancho;
-        this.alto = alto;
-        this.cantidad = cantidad;
-        this.resultado = calcular();
-        return this;
-
-    }
-
     @Override
     public double calcular() {
 
+        double resultado;
+
         if (alto == 0 && cantidad == 0) {
-            return largo * ancho;
+            resultado = largo * ancho;
         }
         else if (cantidad == 0) {
-            return largo * ancho * alto;
+            resultado = largo * ancho * alto;
         }
         else if (alto == 0) {
-            return largo * ancho * cantidad;
+            resultado = largo * ancho * cantidad;
         } else {
-            return largo * ancho * alto * cantidad;
+            resultado = largo * ancho * alto * cantidad;
         }
 
+        setResultado(resultado);
+
+        return resultado;
     }
 }
