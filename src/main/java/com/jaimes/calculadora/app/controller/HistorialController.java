@@ -5,10 +5,7 @@ import com.jaimes.calculadora.app.services.implement.FiguraService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,23 +28,21 @@ public class HistorialController {
         return "redirect:/historial";
     }
 
-    /*
-
-    @GetMapping("/editar/{id}")
+    @GetMapping("cubico/editar/{id}")
     public String ModificarFigura(@PathVariable Integer id, @ModelAttribute Figura figura, Model model) {
         model.addAttribute("medidas", figura);
-        model.addAttribute("accion", "/cubico/editar/" + id);
-        return "cubico";
+        model.addAttribute("accion", "/historial/editar/" + id);
+        return "editarcubico";
     }
+
 
     // POST: Actualizar una figura existente
     @PostMapping("/historial/editar/{id}")
     public String ActualizarFigura(@PathVariable Integer id, @ModelAttribute Figura figura) {
         // Actualiza la figura en la base de datos
+        figura.calcular();
         figuraService.actualizarFigura(id, figura);
-        return "redirect:/cubico";  // Redirigir a la página principal después de la edición
+        return "redirect:/historial";  // Redirigir a la página principal después de la edición
     }
-
-    */
 
 }

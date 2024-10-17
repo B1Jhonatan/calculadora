@@ -48,4 +48,6 @@ public class Figura implements ICalcular {
 
         return resultado;
     }
+
+
 }

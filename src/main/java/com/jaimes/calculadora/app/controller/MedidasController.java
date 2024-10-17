@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -20,43 +19,40 @@ public class MedidasController {
     @Autowired
     private FiguraService figuraService;
 
-    // GET: Mostrar formulario de cálculo cúbico
+    //Mostrar pagina para crear figuras
     @GetMapping("/cubico")
     public String cubicoController(Model model) {
-        // Se pasa una nueva instancia de Figura para el formulario
         model.addAttribute("medidas", new Figura());
         model.addAttribute("accion", "/cubico");
         return "cubico";
     }
 
-    // GET: Mostrar formulario de cálculo cuadrado
+    //Mostrar pagina para crear figuras
     @GetMapping("/cuadrado")
     public String cuadradoController(Model model) {
         model.addAttribute("medidas", new Figura());
         return "cuadrado";
     }
 
-    // POST: Procesar formulario para figura cuadrada
+    //Guardar la figura en la DDBB
     @PostMapping("/cuadrado")
     public String Cuadrado(@ModelAttribute Figura medidas, Model model) {
         double resultado = medidas.calcular();
 
-        // Guarda la figura
         figuraService.crearFigura(medidas);
 
-        // Añadir el resultado al modelo
         model.addAttribute("resultado", resultado);
         model.addAttribute("accion", "/cuadrado");
         return "cuadrado";
     }
 
-    // POST: Procesar formulario para figura cúbica
+    //Guardar la figura en la DDBB
     @PostMapping("/cubico")
     public String Cubico(@ModelAttribute Figura medidas, Model model) {
         double resultado = medidas.calcular();
-        // Guarda la figura
+
         figuraService.crearFigura(medidas);
-        // Añadir el resultado al modelo
+
         model.addAttribute("resultado", resultado);
         model.addAttribute("accion", "/cubico");
         return "cubico";
