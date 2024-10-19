@@ -1,6 +1,6 @@
 package com.jaimes.calculadora.app.models;
 
-import com.jaimes.calculadora.app.models.interfaces.ICalcular;
+import com.jaimes.calculadora.app.models.interfaces.Calcular;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,32 +14,26 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Figura implements ICalcular {
+public class Figura implements Calcular {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Basic
-    private double largo;
-    private double ancho;
-    private double alto;
-    private int cantidad;
-    private double resultado;
+    private Double largo;
+    private Double ancho;
+    private Double alto;
+    private Integer cantidad;
+    private Double resultado;
 
     @Override
     public double calcular() {
 
         double resultado;
 
-        if (alto == 0 && cantidad == 0) {
-            resultado = largo * ancho;
-        }
-        else if (cantidad == 0) {
+        if (cantidad == 0) {
             resultado = largo * ancho * alto;
-        }
-        else if (alto == 0) {
-            resultado = largo * ancho * cantidad;
         } else {
             resultado = largo * ancho * alto * cantidad;
         }
@@ -47,7 +41,7 @@ public class Figura implements ICalcular {
         setResultado(resultado);
 
         return resultado;
-    }
 
+    }
 
 }

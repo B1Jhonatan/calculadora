@@ -17,6 +17,18 @@
         </form>
     </div>
     <div>
+        <form method="get" th:action="@{/historial}">
+            <label for="tipoFigura">Seleccione el tipo de figura</label>
+            <select id="tipoFigura" name="tipo">
+                <option value="any" th:selected="${tipo == 'any'}">Any</option>
+                <option value="cuadrado" th:selected="${tipo == 'cuadradas'}">Cuadrado</option>
+                <option value="Cubico" th:selected="${tipo == 'cubicas'}">Cubico</option>
+            </select>
+            <br>
+            <button type="submit" class="boton">Ver Figuras</button>
+        </form>
+    </div>
+    <div>
         <table>
             <tr>
                 <th>ID</th>
@@ -37,7 +49,6 @@
                     <a th:href="@{/cubico/editar/{id}(id=${figuras.id})}">Editar</a>
                     <a th:href="@{/historial/eliminar/{id}(id=${figuras.id})}">Eliminar</a>
                 </td>
-
             </tr>
         </table>
     </div>

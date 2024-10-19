@@ -1,4 +1,9 @@
 package com.jaimes.calculadora.app.repository;
 
-public interface CuadradoRepository {
+import com.jaimes.calculadora.app.models.Cuadrado;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface CuadradoRepository extends JpaRepository<Cuadrado, Integer> {
 }

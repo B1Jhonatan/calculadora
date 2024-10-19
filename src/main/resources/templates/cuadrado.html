@@ -3,14 +3,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Area Cuadrada</title>
-    <link href="Styles/estilos.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="Styles/estilos.css" type="text/css">
 </head>
 <body>
 <center>
     <h1>CALCULADORA DE OBRA</h1>
     <div>
         <form method="post" action="/redirigir">
-            <button type="submit" name="accion" value="cuadrado" class="boton">Cuadrado</button>
+            <button type="submit" name="accion" value="cuadrado" th:class="boton">Cuadrado</button>
             <button type="submit" name="accion" value="cubico" class="boton">Cubico</button>
             <button type="submit" name="accion" value="historial" class="boton">Historial</button>
         </form>

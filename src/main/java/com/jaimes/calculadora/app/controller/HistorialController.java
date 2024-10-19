@@ -1,7 +1,9 @@
 package com.jaimes.calculadora.app.controller;
 
+import com.jaimes.calculadora.app.models.Cuadrado;
 import com.jaimes.calculadora.app.models.Figura;
-import com.jaimes.calculadora.app.services.implement.FiguraService;
+import com.jaimes.calculadora.app.services.implement.ICuadradoService;
+import com.jaimes.calculadora.app.services.implement.IFiguraService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,21 +15,30 @@ import java.util.List;
 public class HistorialController {
 
     @Autowired
-    FiguraService figuraService;
+    IFiguraService figuraService;
+
+    @Autowired
+    ICuadradoService cuadradoService;
 
     @GetMapping("/historial")
-    public String listaFiguras(Model model){
+    public String listaFiguras(String tipo, Model model){
+
         List<Figura> figuras = figuraService.obtenerTodas();
+
         model.addAttribute("listaFiguras", figuras);
+
         return "historial";
+
     }
 
+    // Eliminar Figuras en el historial
     @GetMapping("/historial/eliminar/{id}")
     public String eliminarFigura(@PathVariable Integer id){
         figuraService.eliminarPersona(id);
         return "redirect:/historial";
     }
 
+    // Ir a la pagina para modificar Figura
     @GetMapping("cubico/editar/{id}")
     public String ModificarFigura(@PathVariable Integer id, @ModelAttribute Figura figura, Model model) {
         model.addAttribute("medidas", figura);
@@ -36,13 +47,14 @@ public class HistorialController {
     }
 
 
-    // POST: Actualizar una figura existente
+    // Actualizar una figura existente
     @PostMapping("/historial/editar/{id}")
     public String ActualizarFigura(@PathVariable Integer id, @ModelAttribute Figura figura) {
-        // Actualiza la figura en la base de datos
+
         figura.calcular();
+
         figuraService.actualizarFigura(id, figura);
-        return "redirect:/historial";  // Redirigir a la página principal después de la edición
+        return "redirect:/historial";
     }
 
 }
