@@ -4,10 +4,12 @@ import com.jaimes.calculadora.app.models.Cuadrado;
 import com.jaimes.calculadora.app.models.Figura;
 import com.jaimes.calculadora.app.services.implement.ICuadradoService;
 import com.jaimes.calculadora.app.services.implement.IFiguraService;
+
+import jakarta.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -20,25 +22,13 @@ public class MedidasController {
     @Autowired
     private ICuadradoService cuadradoService;
 
-    //Mostrar pagina para crear figuras
-    @GetMapping("/cubico")
-    public String cubicoController(Model model) {
-        model.addAttribute("medidas", new Figura());
-        model.addAttribute("accion", "/cubico");
-        return "cubico";
-    }
-
-    //Mostrar pagina para crear figuras
-    @GetMapping("/cuadrado")
-    public String cuadradoController(Model model) {
-        model.addAttribute("medidas", new Cuadrado());
-        return "cuadrado";
-    }
+    String ruta;
+    Double resultado;
 
     //Guardar la figura en la DDBB
     @PostMapping("/cuadrado")
     public String Cuadrado(@ModelAttribute Cuadrado medidas, Model model) {
-        double resultado = medidas.calcular();
+        resultado = medidas.calcular();
 
         cuadradoService.crearCuadrado(medidas);
 
@@ -48,12 +38,14 @@ public class MedidasController {
     }
 
     //Guardar la figura en la DDBB
-    @PostMapping("/cubico")
-    public String Cubico(@ModelAttribute Figura medidas, Model model) {
-        double resultado = medidas.calcular();
+    @PostMapping({"/cubico", "/zapatas", "/pedestales", "/vigas", "/columnas"})
+    public String Cubico(HttpServletRequest request, @ModelAttribute Figura medidas, Model model) {
+        resultado = medidas.calcular();
+        ruta = request.getRequestURI().substring(1);
 
         figuraService.crearFigura(medidas);
 
+        model.addAttribute("nombre", ruta);
         model.addAttribute("resultado", resultado);
         model.addAttribute("accion", "/cubico");
         return "cubico";

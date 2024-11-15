@@ -74,8 +74,31 @@ ul {
     padding: 80px;
 }
 
-.contenedor p {
-    margin: auto;
-    text-align: justify;
+.historial {
+    display: flex;
+    background-color: rgb(0, 0, 40);
     width: 50%;
+    border-radius: 20px;
+    padding: 20px;
+    justify-content: center;
+    margin: auto;
+}
+
+.historial th {
+    padding-bottom: 10px;
+    padding-inline: 5px;
+}
+
+.historial td {
+    padding-bottom: 5px;
+    padding-inline: 5px;
+}
+
+.historial a {
+    text-decoration: none;
+    color: bisque;
+}
+
+.historial a:hover {
+    color: red;
 }

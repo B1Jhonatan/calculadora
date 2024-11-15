@@ -1,44 +1,61 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Área Cúbica</title>
-    <link href="styles/estilos.css" rel="stylesheet" type="text/css">
+    <title th:text="'CO - Area ' + ${nombre}"></title>
+    <link href="styles/cubico.css" rel="stylesheet" type="text/css">
 </head>
+
 <body>
-<center>
-    <h1>CALCULADORA DE OBRA</h1>
-    <div>
-        <form method="post" action="/redirigir">
-            <button type="submit" name="accion" value="cuadrado" class="boton">Cuadrado</button>
-            <button type="submit" name="accion" value="cubico" class="boton">Cubico</button>
-            <button type="submit" name="accion" value="historial" class="boton">Historial</button>
-        </form>
+    <div class="pantalla">
+        <div class="lista">
+            <h1><a th:href="@{/}">Elementos</a></h1>
+            <ul>
+                <li><a th:href="@{zapatas}" class="menu">Zapatas</a></li>
+                <li><a th:href="@{pedestales}" class="menu">Pedestales</a></li>
+                <li><a th:href="@{vigas}" class="menu">Vigas</a></li>
+                <li><a th:href="@{columnas}" class="menu">Columnas</a></li>
+                <li><a th:href="@{placas}" class="menu">Placas</a></li>
+                <li><a th:href="@{muros}" class="menu">Muros</a></li>
+                <li><a th:href="@{pisos}" class="menu">Pisos</a></li>
+                <li><a th:href="@{estuco}" class="menu">Estuco</a></li>
+                <li><a th:href="@{cantidades}" class="menu">Cantidades</a></li>
+                <li><a th:href="@{historial}" class="menu">Historial</a></li>
+            </ul>
+        </div>
+        <div class="contenedor">
+            <h1>CALCULADORA DE OBRA</h1>
+            <div class="formulario">
+                <h2 th:text="'Area ' + ${nombre}"></h2>
+                <form method="post" th:object="${medidas}" th:action="${accion}">
+                    <label for="tipo">Tipo</label>
+                    <br>
+                    <input type="text" id="tipo" name="tipo" class="text" placeholder="indica una etiqueta, ej: Z1">
+                    <br>
+                    <label for="largo">Largo</label>
+                    <br>
+                    <input type="text" id="largo" name="largo" class="text" placeholder="ingresa el largo en metros">
+                    <br>
+                    <label for="ancho">Ancho</label>
+                    <br>
+                    <input type="text" id="ancho" name="ancho" class="text" placeholder="ingresa el ancho en metros">
+                    <br>
+                    <label for="alto">Alto</label>
+                    <br>
+                    <input type="text" id="alto" name="alto" class="text" placeholder="ingresa el alto en metros">
+                    <br>
+                    <label for="cantidad">Cantidad</label>
+                    <br>
+                    <input type="text" id="cantidad" name="cantidad" class="text" placeholder="ingresa la cantidad">
+                    <br>
+                    <br>
+                    <input type="submit" value="Resultado" class="boton">
+                </form>
+                <label for="resultado">Resultado: </label>
+                <label th:text="${resultado}" id="resultado" th:action="${resultado}"></label>
+            </div>
+        </div>
     </div>
-    <div class="botones">
-        <form method="post" th:object="${medidas}" th:action="${accion}">
-            <label for="largo">Largo</label>
-            <br>
-            <input type="text" id="largo" name="largo">
-            <br>
-            <label for="ancho">Ancho</label>
-            <br>
-            <input type="text" id="ancho" name="ancho">
-            <br>
-            <label for="alto">Alto</label>
-            <br>
-            <input type="text" id="alto" name="alto">
-            <br>
-            <label for="cantidad">Cantidad</label>
-            <br>
-            <input type="text" id="cantidad" name="cantidad">
-            <br>
-            <br>
-            <input type="submit" value="Resultado" class="boton">
-        </form>
-        <label for="resultado">Resultado: </label>
-        <label th:text="${resultado}" id="resultado" th:action="${resultado}"></label>
-    </div>
-</center>
 </body>
 </html>

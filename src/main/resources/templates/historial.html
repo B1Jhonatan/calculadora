@@ -1,57 +1,59 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Historial</title>
-    <link href="styles/estilos.css" rel="stylesheet" type="text/css">
+    <link href="styles/historial.css" rel="stylesheet" type="text/css">
 </head>
+
 <body>
-<center>
-    <h1>CALCULADORA DE OBRA</h1>
-    <div>
-        <form method="post" action="/redirigir">
-            <button type="submit" name="accion" value="cuadrado" class="boton">Cuadrado</button>
-            <button type="submit" name="accion" value="cubico" class="boton">Cubico</button>
-            <button type="submit" name="accion" value="historial" class="boton">Historial</button>
-        </form>
+    <div class="pantalla">
+        <div class="lista">
+            <h1><a th:href="@{/}">Elementos</a></h1>
+            <ul>
+                <li><a th:href="@{zapatas}" class="menu">Zapatas</a></li>
+                <li><a th:href="@{pedestales}" class="menu">Pedestales</a></li>
+                <li><a th:href="@{vigas}" class="menu">Vigas</a></li>
+                <li><a th:href="@{columnas}" class="menu">Columnas</a></li>
+                <li><a th:href="@{placas}" class="menu">Placas</a></li>
+                <li><a th:href="@{muros}" class="menu">Muros</a></li>
+                <li><a th:href="@{pisos}" class="menu">Pisos</a></li>
+                <li><a th:href="@{estuco}" class="menu">Estuco</a></li>
+                <li><a th:href="@{cantidades}" class="menu">Cantidades</a></li>
+                <li><a th:href="@{historial}" class="menu">Historial</a></li>
+            </ul>
+        </div>
+        <div class="contenedor">
+            <h1>CALCULADORA DE OBRA</h1>
+            <div class="historial">
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>LARGO</th>
+                        <th>ANCHO</th>
+                        <th>ALTO</th>
+                        <th>CANTIDAD</th>
+                        <th>AREA</th>
+                        <th>MODIFICAR</th>
+                    </tr>
+                    <tr th:each="figuras : ${listaFiguras}">
+                        <td th:text="${figuras.id}"></td>
+                        <td th:text="${figuras.largo}"></td>
+                        <td th:text="${figuras.ancho}"></td>
+                        <td th:text="${figuras.alto}"></td>
+                        <td th:text="${figuras.cantidad}"></td>
+                        <td th:text="${figuras.resultado}"></td>
+                        <td>
+                            <a th:href="@{/cubico/editar/{id}(id=${figuras.id})}">Editar</a>
+                            <a th:href="@{/historial/eliminar/{id}(id=${figuras.id})}">Eliminar</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     </div>
-    <div>
-        <form method="get" th:action="@{/historial}">
-            <label for="tipoFigura">Seleccione el tipo de figura</label>
-            <select id="tipoFigura" name="tipo">
-                <option value="any" th:selected="${tipo == 'any'}">Any</option>
-                <option value="cuadrado" th:selected="${tipo == 'cuadradas'}">Cuadrado</option>
-                <option value="Cubico" th:selected="${tipo == 'cubicas'}">Cubico</option>
-            </select>
-            <br>
-            <button type="submit" class="boton">Ver Figuras</button>
-        </form>
-    </div>
-    <div>
-        <table>
-            <tr>
-                <th>ID</th>
-                <th>LARGO</th>
-                <th>ANCHO</th>
-                <th>ALTO</th>
-                <th>CANTIDAD</th>
-                <th>AREA</th>
-            </tr>
-            <tr th:each="figuras : ${listaFiguras}">
-                <td th:text="${figuras.id}"></td>
-                <td th:text="${figuras.largo}"></td>
-                <td th:text="${figuras.ancho}"></td>
-                <td th:text="${figuras.alto}"></td>
-                <td th:text="${figuras.cantidad}"></td>
-                <td th:text="${figuras.resultado}"></td>
-                <td>
-                    <a th:href="@{/cubico/editar/{id}(id=${figuras.id})}">Editar</a>
-                    <a th:href="@{/historial/eliminar/{id}(id=${figuras.id})}">Eliminar</a>
-                </td>
-            </tr>
-        </table>
-    </div>
-</center>
 </body>
+
 </html>
