@@ -1,6 +1,6 @@
-package com.jaimes.calculadora.app.models;
+package com.jaimes.calculadora.app.entity;
 
-import com.jaimes.calculadora.app.models.interfaces.Calcular;
+import com.jaimes.calculadora.app.entity.interfaces.Calcular;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,6 +1,6 @@
-package com.jaimes.calculadora.app.models;
+package com.jaimes.calculadora.app.entity;
 
-import com.jaimes.calculadora.app.models.interfaces.Calcular;
+import com.jaimes.calculadora.app.entity.interfaces.Calcular;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,6 +19,9 @@ public class Figura implements Calcular {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+
+    private String tipo;
 
     @Basic
     private Double largo;

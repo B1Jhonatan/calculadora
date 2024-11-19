@@ -1,6 +1,6 @@
 package com.jaimes.calculadora.app.repository;
 
-import com.jaimes.calculadora.app.models.Figura;
+import com.jaimes.calculadora.app.entity.Figura;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

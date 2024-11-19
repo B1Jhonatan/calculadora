@@ -1,7 +1,7 @@
 package com.jaimes.calculadora.app.controller;
 
-import com.jaimes.calculadora.app.models.Cuadrado;
-import com.jaimes.calculadora.app.models.Figura;
+import com.jaimes.calculadora.app.entity.Cuadrado;
+import com.jaimes.calculadora.app.entity.Figura;
 import com.jaimes.calculadora.app.services.implement.ICuadradoService;
 import com.jaimes.calculadora.app.services.implement.IFiguraService;
 

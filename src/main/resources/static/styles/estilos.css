@@ -32,10 +32,6 @@
     text-decoration: none;
 }
 
-.lista a:hover {
-    color: white;
-}
-
 .lista li {
     width: 100%;
     height: 40px;
@@ -54,8 +50,8 @@
 }
 
 .menu:hover {
-    background-color: aqua;
     color: black;
+    background-color: aqua;
 }
 
 ul {

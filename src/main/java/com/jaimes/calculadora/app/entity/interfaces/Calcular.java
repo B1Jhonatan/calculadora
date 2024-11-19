@@ -1,4 +1,4 @@
-package com.jaimes.calculadora.app.models.interfaces;
+package com.jaimes.calculadora.app.entity.interfaces;
 
 public interface Calcular {
     double calcular();

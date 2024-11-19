@@ -1,6 +1,6 @@
 package com.jaimes.calculadora.app.services;
 
-import com.jaimes.calculadora.app.models.Cuadrado;
+import com.jaimes.calculadora.app.entity.Cuadrado;
 import com.jaimes.calculadora.app.repository.CuadradoRepository;
 import com.jaimes.calculadora.app.services.implement.ICuadradoService;
 import org.springframework.beans.factory.annotation.Autowired;
