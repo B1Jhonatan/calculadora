@@ -28,29 +28,24 @@ public class MedidasController {
     //Guardar la figura en la DDBB
     @PostMapping("/cuadrado")
     public String Cuadrado(@ModelAttribute Cuadrado medidas, Model model) {
-
         cuadradoService.crearCuadrado(medidas);
-
         model.addAttribute("accion", "/cuadrado");
-
-        return "cuadrado";
-        
+        return "cuadrado";   
     }
 
     //Guardar la figura en la DDBB
-    @PostMapping({"/cubico", "/zapatas", "/pedestales", "/vigas", "/columnas"})
+    @PostMapping({"/zapatas", "/pedestales", "/vigas", "/columnas"})
     public String Cubico(HttpServletRequest request, @ModelAttribute Figura medidas, Model model) {
-        
+        //Guarda los datos puestos en el formulario del HTML
         figuraService.crearFigura(medidas);
         operacion = "Area";
-        nombre = request.getRequestURI().substring(1);
-
+        nombre = request.getRequestURI();
         model.addAttribute("operacion", operacion);
-        model.addAttribute("nombre", nombre);
-        model.addAttribute("accion", "/cubico");
-
+        model.addAttribute("nombre", nombre.substring(1));
+        //Retorna la pagina despues de guardar los elementos enviados
+        model.addAttribute("accion", nombre);
+        //Devuelve el HTML cubico
         return "cubico";
-
     }
-
+    
 }

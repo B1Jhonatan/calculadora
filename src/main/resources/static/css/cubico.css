@@ -101,6 +101,7 @@ ul {
     padding-left: 10px;
     border-radius: 10px;
     border: 2px black solid;
+    background-color: rgb(200, 200, 200);
 }
 
 .boton {
@@ -108,8 +109,14 @@ ul {
     height: 30px;
     margin-top: 20px;
     border-radius: 10px;
-    background-color: white;
+    background-color: rgb(50,50,50);
     border: 0px;
+    color: white;
+}
+
+.boton:hover {
+    background-color: rgb(55, 55, 55);
+    cursor: pointer;
 }
 
 .resultado {

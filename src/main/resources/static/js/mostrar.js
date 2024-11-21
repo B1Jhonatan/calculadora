@@ -1,8 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('resultado').addEventListener('submit', function (event) {
-
-        event.preventDefault();
+        event.preventDefault(); // Detiene el envío automático del formulario.
 
         let tipo = document.getElementById('tipo').value.trim();
         let largo = document.getElementById('largo').value.trim();
@@ -12,30 +11,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let valido = true;
 
+        // Validación de campos vacíos.
         if (tipo === '' || largo === '' || ancho === '' || alto === '' || cantidad === '') {
             valido = false;
+            alert("Por favor, llena todos los campos.");
         }
 
         if (valido === true) {
-            const resultado = document.getElementById('mirar');
-            resultado.innerHTML = `
-            <h3>Datos enviados:</h3>
-            <p><strong>Tipo:</strong> ${tipo}</p>
-            <p><strong>Largo:</strong> ${largo}</p>
-            <p><strong>Ancho:</strong> ${ancho}</p>
-            <p><strong>Alto:</strong> ${alto}</p>
-            <p><strong>Cantidad:</strong> ${cantidad}</p>
-        `;
-            resultado.style.display = 'block';
+            
+            //Mostrar los datos enviados en pantalla
+            alert("Datos enviados:\n" +
+                `Tipo: ${tipo}\nLargo: ${largo}\nAncho: ${ancho}\nAlto: ${alto}\nCantidad: ${cantidad}`);
 
-            this.submit();
-            
-            setTimeout(() => {
-                document.getElementById('resultado').submit();
-            }, 3000);
-            
+            this.submit(); 
+
         }
-
-    })
+    });
 
 });
