@@ -33,9 +33,8 @@ public class FiguraService implements IFiguraService {
     @Override
     public Figura actualizarFigura(Integer id, Figura figura) {
         Figura figuraDB = figuraRepository.findById(id).orElse(null);
-
         if(figuraDB != null){
-
+            figuraDB.setTipo(figura.getTipo());
             figuraDB.setLargo(figura.getLargo());
             figuraDB.setAncho(figura.getAncho());
             figuraDB.setAlto(figura.getAlto());
@@ -43,9 +42,7 @@ public class FiguraService implements IFiguraService {
             figuraDB.setAreaUnidad(figura.getAreaUnidad());
             figuraDB.setAreaTotal(figura.getAreaTotal());
             return figuraRepository.save(figuraDB);
-
         }
-
         return null;
     }
 

@@ -44,14 +44,14 @@ public class HistorialController {
 
         Figura elemento = figuraService.obtenerPorId(id);
 
-        model.addAttribute("operacion", "Elemento");
+        model.addAttribute("operacion", "Editar " + elemento.getElemento());
         model.addAttribute("nombre", elemento.getTipo());
         model.addAttribute("tipo", elemento.getTipo());
         model.addAttribute("largo", elemento.getLargo());
         model.addAttribute("ancho", elemento.getAncho());
         model.addAttribute("alto", elemento.getAlto());
         model.addAttribute("cantidad", elemento.getCantidad());
-        model.addAttribute("accion", "/historial/editar/" + id);
+        model.addAttribute("accion", "/" + id);
 
         return "cubico";
         
@@ -59,7 +59,7 @@ public class HistorialController {
 
 
     // Actualizar una figura existente
-    @PostMapping("/historial/editar/{id}")
+    @PostMapping("/{id}")
     public String ActualizarFigura(@PathVariable Integer id, @ModelAttribute Figura figura) {
 
         figura.calcular();
