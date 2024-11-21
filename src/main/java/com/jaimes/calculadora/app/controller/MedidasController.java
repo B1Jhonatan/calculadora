@@ -22,33 +22,35 @@ public class MedidasController {
     @Autowired
     private ICuadradoService cuadradoService;
 
-    String ruta;
-    Double resultado;
+    String nombre;
+    String operacion;
 
     //Guardar la figura en la DDBB
     @PostMapping("/cuadrado")
     public String Cuadrado(@ModelAttribute Cuadrado medidas, Model model) {
-        resultado = medidas.calcular();
 
         cuadradoService.crearCuadrado(medidas);
 
-        model.addAttribute("resultado", resultado);
         model.addAttribute("accion", "/cuadrado");
+
         return "cuadrado";
+        
     }
 
     //Guardar la figura en la DDBB
     @PostMapping({"/cubico", "/zapatas", "/pedestales", "/vigas", "/columnas"})
     public String Cubico(HttpServletRequest request, @ModelAttribute Figura medidas, Model model) {
-        resultado = medidas.calcular();
-        ruta = request.getRequestURI().substring(1);
-
+        
         figuraService.crearFigura(medidas);
+        operacion = "Area";
+        nombre = request.getRequestURI().substring(1);
 
-        model.addAttribute("nombre", ruta);
-        model.addAttribute("resultado", resultado);
+        model.addAttribute("operacion", operacion);
+        model.addAttribute("nombre", nombre);
         model.addAttribute("accion", "/cubico");
+
         return "cubico";
+
     }
 
 }

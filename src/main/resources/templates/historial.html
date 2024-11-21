@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Historial</title>
+    <title th:text="'CO - Historial'"></title>
     <link href="styles/historial.css" rel="stylesheet" type="text/css">
 </head>
 
@@ -13,16 +13,16 @@
         <div class="lista">
             <h1><a th:href="@{/}">Elementos</a></h1>
             <ul>
-                <li><a th:href="@{zapatas}" class="menu">Zapatas</a></li>
-                <li><a th:href="@{pedestales}" class="menu">Pedestales</a></li>
-                <li><a th:href="@{vigas}" class="menu">Vigas</a></li>
-                <li><a th:href="@{columnas}" class="menu">Columnas</a></li>
-                <li><a th:href="@{placas}" class="menu">Placas</a></li>
-                <li><a th:href="@{muros}" class="menu">Muros</a></li>
-                <li><a th:href="@{pisos}" class="menu">Pisos</a></li>
-                <li><a th:href="@{estuco}" class="menu">Estuco</a></li>
-                <li><a th:href="@{cantidades}" class="menu">Cantidades</a></li>
-                <li><a th:href="@{historial}" class="menu">Historial</a></li>
+                <li><a th:href="@{/zapatas}" class="menu">Zapatas</a></li>
+                <li><a th:href="@{/pedestales}" class="menu">Pedestales</a></li>
+                <li><a th:href="@{/vigas}" class="menu">Vigas</a></li>
+                <li><a th:href="@{/columnas}" class="menu">Columnas</a></li>
+                <li><a th:href="@{/placas}" class="menu">Placas</a></li>
+                <li><a th:href="@{/muros}" class="menu">Muros</a></li>
+                <li><a th:href="@{/pisos}" class="menu">Pisos</a></li>
+                <li><a th:href="@{/estuco}" class="menu">Estuco</a></li>
+                <li><a th:href="@{/cantidades}" class="menu">Cantidades</a></li>
+                <li><a th:href="@{/historial}" class="menu">Historial</a></li>
             </ul>
         </div>
         <div class="contenedor">
@@ -31,22 +31,28 @@
                 <table>
                     <tr>
                         <th>ID</th>
+                        <th>ELEMENTO</th>
+                        <th>TIPO</th>
                         <th>LARGO</th>
                         <th>ANCHO</th>
                         <th>ALTO</th>
                         <th>CANTIDAD</th>
-                        <th>AREA</th>
+                        <th>AREA UNITARIA</th>
+                        <th>AREA TOTAL</th>
                         <th>MODIFICAR</th>
                     </tr>
                     <tr th:each="figuras : ${listaFiguras}">
                         <td th:text="${figuras.id}"></td>
-                        <td th:text="${figuras.largo}"></td>
-                        <td th:text="${figuras.ancho}"></td>
-                        <td th:text="${figuras.alto}"></td>
+                        <td th:text="${figuras.elemento}"></td>
+                        <td th:text="${figuras.tipo}"></td>
+                        <td th:text="${figuras.largo} + ' ' + 'm'"></td>
+                        <td th:text="${figuras.ancho} + ' ' + 'm'"></td>
+                        <td th:text="${figuras.alto} + ' ' + 'm'"></td>
                         <td th:text="${figuras.cantidad}"></td>
-                        <td th:text="${figuras.resultado}"></td>
+                        <td th:text="${figuras.areaUnidad + ' ' + 'm3'}"></td>
+                        <td th:text="${figuras.areaTotal}  + ' ' + 'm3'"></td>
                         <td>
-                            <a th:href="@{/cubico/editar/{id}(id=${figuras.id})}">Editar</a>
+                            <a th:href="@{editar/elemento/{id} (id=${figuras.id})}">Editar</a>
                             <a th:href="@{/historial/eliminar/{id}(id=${figuras.id})}">Eliminar</a>
                         </td>
                     </tr>

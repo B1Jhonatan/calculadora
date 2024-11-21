@@ -19,6 +19,7 @@ public class HistorialController {
     @Autowired
     ICuadradoService cuadradoService;
 
+
     @GetMapping("/historial")
     public String listaFiguras(String tipo, Model model){
 
@@ -38,11 +39,22 @@ public class HistorialController {
     }
 
     // Ir a la pagina para modificar Figura
-    @GetMapping("cubico/editar/{id}")
+    @GetMapping("editar/elemento/{id}")
     public String ModificarFigura(@PathVariable Integer id, @ModelAttribute Figura figura, Model model) {
-        model.addAttribute("medidas", figura);
+
+        Figura elemento = figuraService.obtenerPorId(id);
+
+        model.addAttribute("operacion", "Elemento");
+        model.addAttribute("nombre", elemento.getTipo());
+        model.addAttribute("tipo", elemento.getTipo());
+        model.addAttribute("largo", elemento.getLargo());
+        model.addAttribute("ancho", elemento.getAncho());
+        model.addAttribute("alto", elemento.getAlto());
+        model.addAttribute("cantidad", elemento.getCantidad());
         model.addAttribute("accion", "/historial/editar/" + id);
-        return "editarcubico";
+
+        return "cubico";
+        
     }
 
 

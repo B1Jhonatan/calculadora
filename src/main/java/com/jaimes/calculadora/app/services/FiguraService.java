@@ -26,6 +26,7 @@ public class FiguraService implements IFiguraService {
 
     @Override
     public Figura crearFigura(Figura figura) {
+        figura.calcular();
         return figuraRepository.save(figura);
     }
 
@@ -39,7 +40,8 @@ public class FiguraService implements IFiguraService {
             figuraDB.setAncho(figura.getAncho());
             figuraDB.setAlto(figura.getAlto());
             figuraDB.setCantidad(figura.getCantidad());
-            figuraDB.setResultado(figura.getResultado());
+            figuraDB.setAreaUnidad(figura.getAreaUnidad());
+            figuraDB.setAreaTotal(figura.getAreaTotal());
             return figuraRepository.save(figuraDB);
 
         }

@@ -20,28 +20,27 @@ public class Figura implements Calcular {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-
     private String tipo;
 
     @Basic
+    private String elemento;
     private Double largo;
     private Double ancho;
     private Double alto;
     private Integer cantidad;
-    private Double resultado;
+    private Double areaUnidad;
+    private Double areaTotal;
 
     @Override
     public double calcular() {
 
         double resultado;
 
-        if (cantidad == 0) {
-            resultado = largo * ancho * alto;
-        } else {
-            resultado = largo * ancho * alto * cantidad;
-        }
+        resultado = largo * ancho * alto;
+        setAreaUnidad(resultado);
 
-        setResultado(resultado);
+        resultado = largo * ancho * alto * cantidad;
+        setAreaTotal(resultado);
 
         return resultado;
 

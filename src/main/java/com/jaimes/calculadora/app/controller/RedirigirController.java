@@ -9,9 +9,16 @@ import jakarta.servlet.http.HttpServletRequest;
 @Controller
 public class RedirigirController {
 
+    String operacion;
+    String ruta;
+
     @GetMapping({"/zapatas", "/pedestales", "/vigas", "/columnas"})
     public String cubico(HttpServletRequest request, Model model){
-        String ruta = request.getRequestURI().substring(1);
+
+        operacion = "Area";
+        ruta = request.getRequestURI().substring(1);
+        
+        model.addAttribute("operacion", operacion);
         model.addAttribute("nombre", ruta);
         return "cubico";
     }
