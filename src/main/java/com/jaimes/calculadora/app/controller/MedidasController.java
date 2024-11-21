@@ -2,8 +2,8 @@ package com.jaimes.calculadora.app.controller;
 
 import com.jaimes.calculadora.app.entity.Cuadrado;
 import com.jaimes.calculadora.app.entity.Figura;
-import com.jaimes.calculadora.app.services.implement.ICuadradoService;
-import com.jaimes.calculadora.app.services.implement.IFiguraService;
+import com.jaimes.calculadora.app.services.implement.CuadradoService;
+import com.jaimes.calculadora.app.services.implement.FiguraService;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class MedidasController {
 
     @Autowired
-    private IFiguraService figuraService;
+    private FiguraService figuraService;
 
     @Autowired
-    private ICuadradoService cuadradoService;
+    private CuadradoService cuadradoService;
 
     String nombre;
     String operacion;

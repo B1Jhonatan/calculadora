@@ -4,7 +4,7 @@ import com.jaimes.calculadora.app.entity.Cuadrado;
 
 import java.util.List;
 
-public interface ICuadradoService {
+public interface CuadradoService {
 
     List<Cuadrado> obtenerTodas();
 

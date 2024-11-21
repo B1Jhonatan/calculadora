@@ -2,14 +2,14 @@ package com.jaimes.calculadora.app.services;
 
 import com.jaimes.calculadora.app.entity.Figura;
 import com.jaimes.calculadora.app.repository.FiguraRepository;
-import com.jaimes.calculadora.app.services.implement.IFiguraService;
+import com.jaimes.calculadora.app.services.implement.FiguraService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class FiguraService implements IFiguraService {
+public class FiguraImplement implements FiguraService {
 
     @Autowired
     private FiguraRepository figuraRepository;

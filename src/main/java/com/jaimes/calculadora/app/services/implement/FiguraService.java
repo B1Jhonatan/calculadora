@@ -4,7 +4,7 @@ import com.jaimes.calculadora.app.entity.Figura;
 
 import java.util.List;
 
-public interface IFiguraService {
+public interface FiguraService {
 
     List<Figura> obtenerTodas();
 

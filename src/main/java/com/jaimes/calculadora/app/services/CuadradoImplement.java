@@ -2,14 +2,14 @@ package com.jaimes.calculadora.app.services;
 
 import com.jaimes.calculadora.app.entity.Cuadrado;
 import com.jaimes.calculadora.app.repository.CuadradoRepository;
-import com.jaimes.calculadora.app.services.implement.ICuadradoService;
+import com.jaimes.calculadora.app.services.implement.CuadradoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class CuadradoService implements ICuadradoService {
+public class CuadradoImplement implements CuadradoService {
 
     @Autowired
     private CuadradoRepository cuadradoRepository;

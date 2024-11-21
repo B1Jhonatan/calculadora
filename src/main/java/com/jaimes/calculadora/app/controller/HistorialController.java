@@ -1,8 +1,8 @@
 package com.jaimes.calculadora.app.controller;
 
 import com.jaimes.calculadora.app.entity.Figura;
-import com.jaimes.calculadora.app.services.implement.ICuadradoService;
-import com.jaimes.calculadora.app.services.implement.IFiguraService;
+import com.jaimes.calculadora.app.services.implement.CuadradoService;
+import com.jaimes.calculadora.app.services.implement.FiguraService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,10 +14,10 @@ import java.util.List;
 public class HistorialController {
 
     @Autowired
-    IFiguraService figuraService;
+    FiguraService figuraService;
 
     @Autowired
-    ICuadradoService cuadradoService;
+    CuadradoService cuadradoService;
 
 
     @GetMapping("/historial")
@@ -27,14 +27,14 @@ public class HistorialController {
         return "historial";
     }
 
-    // Eliminar Figuras en el historial
+    //Eliminar Figuras en el historial
     @GetMapping("/historial/eliminar/{id}")
     public String eliminarFigura(@PathVariable Integer id){
         figuraService.eliminarPersona(id);
         return "redirect:/historial";
     }
 
-    // Ir a la pagina para modificar Figura
+    //Ir a la pagina para modificar Figura
     @GetMapping("editar/elemento/{id}")
     public String ModificarFigura(@PathVariable Integer id, @ModelAttribute Figura figura, Model model) {
         //Se obtiene el elemento atravez del ID para remapearlo en el HTML
