@@ -1,4 +1,4 @@
-package com.jaimes.calculadora.app.entity;
+package com.jaimes.calculadora.app.entity.cuadrado;
 
 import com.jaimes.calculadora.app.entity.interfaces.Calcular;
 import jakarta.persistence.*;
@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Cuadrado implements Calcular {
+public class Figura2D implements Calcular {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

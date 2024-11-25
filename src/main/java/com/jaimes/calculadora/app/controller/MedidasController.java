@@ -1,9 +1,9 @@
 package com.jaimes.calculadora.app.controller;
 
-import com.jaimes.calculadora.app.entity.Cuadrado;
-import com.jaimes.calculadora.app.entity.Figura;
+import com.jaimes.calculadora.app.entity.cuadrado.Figura2D;
+import com.jaimes.calculadora.app.entity.cubico.Figura3D;
 import com.jaimes.calculadora.app.services.implement.CuadradoService;
-import com.jaimes.calculadora.app.services.implement.FiguraService;
+import com.jaimes.calculadora.app.services.implement.Figura3DService;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class MedidasController {
 
     @Autowired
-    private FiguraService figuraService;
+    private Figura3DService figura3DService;
 
     @Autowired
     private CuadradoService cuadradoService;
@@ -27,7 +27,7 @@ public class MedidasController {
 
     //Guardar la figura en la DDBB
     @PostMapping("/cuadrado")
-    public String Cuadrado(@ModelAttribute Cuadrado medidas, Model model) {
+    public String Cuadrado(@ModelAttribute Figura2D medidas, Model model) {
         cuadradoService.crearCuadrado(medidas);
         model.addAttribute("accion", "/cuadrado");
         return "cuadrado";   
@@ -35,9 +35,9 @@ public class MedidasController {
 
     //Guardar la figura en la DDBB
     @PostMapping({"/zapatas", "/pedestales", "/vigas", "/columnas"})
-    public String Cubico(HttpServletRequest request, @ModelAttribute Figura medidas, Model model) {
+    public String Cubico(HttpServletRequest request, @ModelAttribute Figura3D medidas, Model model) {
         //Guarda los datos puestos en el formulario del HTML
-        figuraService.crearFigura(medidas);
+        figura3DService.crearFigura(medidas);
         operacion = "Area";
         nombre = request.getRequestURI();
         model.addAttribute("operacion", operacion);

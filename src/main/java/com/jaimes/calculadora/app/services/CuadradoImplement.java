@@ -1,6 +1,6 @@
 package com.jaimes.calculadora.app.services;
 
-import com.jaimes.calculadora.app.entity.Cuadrado;
+import com.jaimes.calculadora.app.entity.cuadrado.Figura2D;
 import com.jaimes.calculadora.app.repository.CuadradoRepository;
 import com.jaimes.calculadora.app.services.implement.CuadradoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,23 +15,23 @@ public class CuadradoImplement implements CuadradoService {
     private CuadradoRepository cuadradoRepository;
 
     @Override
-    public List<Cuadrado> obtenerTodas() {
+    public List<Figura2D> obtenerTodas() {
         return cuadradoRepository.findAll();
     }
 
     @Override
-    public Cuadrado obtenerPorId(Integer id) {
+    public Figura2D obtenerPorId(Integer id) {
         return cuadradoRepository.findById(id).orElse(null);
     }
 
     @Override
-    public Cuadrado crearCuadrado(Cuadrado cuadrado) {
+    public Figura2D crearCuadrado(Figura2D cuadrado) {
         return cuadradoRepository.save(cuadrado);
     }
 
     @Override
-    public Cuadrado actualizarCuadrado(Integer id, Cuadrado cuadrado) {
-        Cuadrado cuadradoDB = cuadradoRepository.findById(id).orElse(null);
+    public Figura2D actualizarCuadrado(Integer id, Figura2D cuadrado) {
+        Figura2D cuadradoDB = cuadradoRepository.findById(id).orElse(null);
 
         if(cuadradoDB != null){
 

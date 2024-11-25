@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.jaimes.calculadora.app.entity.cubico.Figura3D;
 
-public interface FiguraService {
+public interface Figura3DService {
 
     List<Figura3D> obtenerTodas();
 

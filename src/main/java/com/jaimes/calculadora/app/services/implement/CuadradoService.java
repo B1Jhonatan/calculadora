@@ -1,18 +1,18 @@
 package com.jaimes.calculadora.app.services.implement;
 
-import com.jaimes.calculadora.app.entity.Cuadrado;
-
 import java.util.List;
+
+import com.jaimes.calculadora.app.entity.cuadrado.Figura2D;
 
 public interface CuadradoService {
 
-    List<Cuadrado> obtenerTodas();
+    List<Figura2D> obtenerTodas();
 
-    Cuadrado obtenerPorId(Integer id);
+    Figura2D obtenerPorId(Integer id);
 
-    Cuadrado crearCuadrado(Cuadrado cuadrado);
+    Figura2D crearCuadrado(Figura2D cuadrado);
 
-    Cuadrado actualizarCuadrado(Integer id, Cuadrado cuadrado);
+    Figura2D actualizarCuadrado(Integer id, Figura2D cuadrado);
 
     void eliminarCuadrado(Integer id);
 

@@ -1,4 +1,4 @@
-package com.jaimes.calculadora.app.entity;
+package com.jaimes.calculadora.app.entity.cubico;
 
 import com.jaimes.calculadora.app.entity.interfaces.Calcular;
 import jakarta.persistence.Basic;
@@ -14,16 +14,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Figura implements Calcular {
+public class Figura3D implements Calcular {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String tipo;
-
     @Basic
     private String elemento;
+    private String tipo;
     private Double largo;
     private Double ancho;
     private Double alto;
