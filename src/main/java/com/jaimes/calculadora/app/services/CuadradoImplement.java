@@ -1,6 +1,6 @@
 package com.jaimes.calculadora.app.services;
 
-import com.jaimes.calculadora.app.entity.cuadrado.Figura2D;
+import com.jaimes.calculadora.app.entity.Figura2D;
 import com.jaimes.calculadora.app.repository.CuadradoRepository;
 import com.jaimes.calculadora.app.services.implement.CuadradoService;
 import org.springframework.beans.factory.annotation.Autowired;

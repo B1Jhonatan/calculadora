@@ -1,4 +1,4 @@
-package com.jaimes.calculadora.app.entity.cuadrado;
+package com.jaimes.calculadora.app.entity;
 
 import com.jaimes.calculadora.app.entity.interfaces.Calcular;
 import jakarta.persistence.*;

@@ -2,7 +2,7 @@ package com.jaimes.calculadora.app.services.implement;
 
 import java.util.List;
 
-import com.jaimes.calculadora.app.entity.cubico.Figura3D;
+import com.jaimes.calculadora.app.entity.Figura3D;
 
 public interface Figura3DService {
 

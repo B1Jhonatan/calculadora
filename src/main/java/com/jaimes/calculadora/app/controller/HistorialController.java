@@ -1,6 +1,6 @@
 package com.jaimes.calculadora.app.controller;
 
-import com.jaimes.calculadora.app.entity.cubico.Figura3D;
+import com.jaimes.calculadora.app.entity.Figura3D;
 import com.jaimes.calculadora.app.services.implement.CuadradoService;
 import com.jaimes.calculadora.app.services.implement.Figura3DService;
 import org.springframework.beans.factory.annotation.Autowired;

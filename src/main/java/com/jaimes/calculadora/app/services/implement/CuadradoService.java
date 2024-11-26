@@ -2,7 +2,7 @@ package com.jaimes.calculadora.app.services.implement;
 
 import java.util.List;
 
-import com.jaimes.calculadora.app.entity.cuadrado.Figura2D;
+import com.jaimes.calculadora.app.entity.Figura2D;
 
 public interface CuadradoService {
 
