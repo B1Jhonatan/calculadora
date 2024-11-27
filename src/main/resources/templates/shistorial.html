@@ -28,8 +28,8 @@
         <div class="contenedor">
             <h1>CALCULADORA DE OBRA</h1>
             <div class="chistorial">
-                <div class="historial" th:each="tablas : ${listaElementos}">
-                    <a th:href="@{/historial}" th:text="${tablas}"></a>
+                <div class="historial" th:each="tablas : ${listaTablas}">
+                    <a th:href="@{/historial/{elemento} (elemento=${tablas})}" th:text="${tablas}"></a>
                 </div>
             </div>
         </div>

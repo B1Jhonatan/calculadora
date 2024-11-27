@@ -9,13 +9,12 @@ import jakarta.servlet.http.HttpServletRequest;
 @Controller
 public class RedirigirController {
 
-    private String operacion;
+    private String operacion = "Area";
     private String nombre;
 
     @GetMapping({"/zapatas", "/pedestales", "/vigas", "/columnas"})
     public String cubico(HttpServletRequest request, Model model){
         //Variables para moldear el HTML a el uso que se le va a dar
-        operacion = "Area";
         nombre = request.getRequestURI();
         //Mapeo del HTML para el uso que se le va a dar a "cubico"
         model.addAttribute("operacion", operacion);
@@ -24,7 +23,12 @@ public class RedirigirController {
     }
 
     @GetMapping({"/pisos", "/estuco"})
-    public String cuadrado(){
+    public String cuadrado(HttpServletRequest request, Model model){
+        //Variables para moldear el HTML a el uso que se le va a dar
+        nombre = request.getRequestURI();
+        //Mapeo del HTML para el uso que se le va a dar a "cuadrado"
+        model.addAttribute("operacion", operacion);
+        model.addAttribute("nombre", nombre.substring(1));
         return "cuadrado";
     }
 

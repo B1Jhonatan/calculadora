@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title th:text="'CO - Historial' + @{elemento}"></title>
     <link th:href="@{/css/historial.css}" rel="stylesheet" type="text/css">
+    <script th:src="@{/js/mhistorial.js}"></script>
 </head>
 
 <body>
@@ -27,7 +28,7 @@
         </div>
         <div class="contenedor">
             <h1>CALCULADORA DE OBRA</h1>
-            <div class="historial">
+            <div class="historial" id="elemento3d">
                 <table>
                     <tr>
                         <th th:text="'ID'"></th>
@@ -41,19 +42,54 @@
                         <th th:text="'AREA TOTAL'"></th>
                         <th th:text="'MODIFICAR'"></th>
                     </tr>
-                    <tr th:each="figuras : ${listaFiguras}">
-                        <td th:text="${figuras.id}"></td>
-                        <td th:text="${figuras.elemento}"></td>
-                        <td th:text="${figuras.tipo}"></td>
-                        <td th:text="${figuras.largo} + ' ' + 'm'"></td>
-                        <td th:text="${figuras.ancho} + ' ' + 'm'"></td>
-                        <td th:text="${figuras.alto} + ' ' + 'm'"></td>
-                        <td th:text="${figuras.cantidad}"></td>
-                        <td th:text="${figuras.areaUnidad + ' ' + 'm3'}"></td>
-                        <td th:text="${figuras.areaTotal}  + ' ' + 'm3'"></td>
+                    <tr th:each="figura3d : ${elemento3d}">
+                        <td th:text="${figura3d.id}"></td>
+                        <td th:text="${figura3d.elemento}"></td>
+                        <td th:text="${figura3d.tipo}"></td>
+                        <td th:text="${figura3d.largo} + ' ' + 'm'"></td>
+                        <td th:text="${figura3d.ancho} + ' ' + 'm'"></td>
+                        <td th:text="${figura3d.alto} + ' ' + 'm'"></td>
+                        <td th:text="${figura3d.cantidad}"></td>
+                        <td th:text="${figura3d.areaUnidad + ' ' + 'm3'}"></td>
+                        <td th:text="${figura3d.areaTotal}  + ' ' + 'm3'"></td>
                         <td>
-                            <a th:href="@{editar/elemento/{id} (id=${figuras.id})}">Editar</a>
-                            <a th:href="@{/eliminar/elemento/{id}(id=${figuras.id})}">Eliminar</a>
+                            <a th:href="@{/editar/figura3d/{id} (id=${figura3d.id})}">
+                                Editar
+                            </a>
+                            <a th:href="@{/eliminar/figura3d/{id}(id=${figura3d.id})}">
+                                Eliminar
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="historial" id="elemento2d">
+                <table>
+                    <tr>
+                        <th th:text="'ID'"></th>
+                        <th th:text="'ELEMENTO'"></th>
+                        <th th:text="'TIPO'"></th>
+                        <th th:text="'LARGO'"></th>
+                        <th th:text="'ANCHO'"></th>
+                        <th th:text="'CANTIDAD'"></th>
+                        <th th:text="'AREA UNITARIA'"></th>
+                        <th th:text="'AREA TOTAL'"></th>
+                        <th th:text="'MODIFICAR'"></th>
+                    </tr>
+                    <tr th:each="figura2d : ${elemento2d}">
+                        <td th:text="${figura2d.id}"></td>
+                        <td th:text="${figura2d.elemento}"></td>
+                        <td th:text="${figura2d.tipo}"></td>
+                        <td th:text="${figura2d.largo} + ' ' + 'm'"></td>
+                        <td th:text="${figura2d.ancho} + ' ' + 'm'"></td>
+                        <td th:text="${figura2d.cantidad}"></td>
+                        <td th:text="${figura2d.areaUnidad + ' ' + 'm2'}"></td>
+                        <td th:text="${figura2d.areaTotal}  + ' ' + 'm2'"></td>
+                        <td>
+                            <a th:href="@{/editar/figura2d/{id} (id=${figura2d.id})}">
+                                Editar
+                            </a>
+                            <a th:href="@{/eliminar/figura2d/{id}(id=${figura2d.id})}">Eliminar</a>
                         </td>
                     </tr>
                 </table>

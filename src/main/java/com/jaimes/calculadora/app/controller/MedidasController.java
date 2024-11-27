@@ -19,20 +19,29 @@ public class MedidasController {
     private final Figura3DService figura3DService;
     private final Figura2DService figura2DService;
     
+    //Constructor de los servicios dentro del controllador
     @Autowired
     public MedidasController(Figura2DService figura2dService, Figura3DService figura3dService){
         this.figura2DService = figura2dService;
         this.figura3DService = figura3dService;
     }
 
+    //Variables para usar en el mapeo del HTML
     private String nombre;
-    private String operacion;
+    private String operacion = "Area";
 
     //Guardar la figura en la DDBB
-    @PostMapping("/cuadrado")
-    public String Cuadrado(@ModelAttribute Figura2D medidas, Model model) {
+    @PostMapping({"/estuco", "/pisos"})
+    public String Cuadrado(HttpServletRequest request, @ModelAttribute Figura2D medidas, Model model) {
+        //Guarda los datos puestos en el formulario del HTML
         figura2DService.crearFigura2d(medidas);
-        model.addAttribute("accion", "/cuadrado");
+        //Variables para moldear el HTML a el uso que se le va a dar
+        nombre = request.getRequestURI();
+        model.addAttribute("operacion", operacion);
+        model.addAttribute("nombre", nombre);
+        //Retorna la pagina despues de guardar los elementos enviados
+        model.addAttribute("accion", nombre);
+        //Vuelve a cargar el formulario
         return "cuadrado";   
     }
 
@@ -41,7 +50,7 @@ public class MedidasController {
     public String Cubico(HttpServletRequest request, @ModelAttribute Figura3D medidas, Model model) {
         //Guarda los datos puestos en el formulario del HTML
         figura3DService.crearFigura3d(medidas);
-        operacion = "Area";
+        //Variables para moldear el HTML a el uso que se le va a dar
         nombre = request.getRequestURI();
         model.addAttribute("operacion", operacion);
         model.addAttribute("nombre", nombre.substring(1));
