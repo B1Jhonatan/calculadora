@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title th:text="'CO - Historial'"></title>
+    <title th:text="'CO - Historial' + @{elemento}"></title>
     <link th:href="@{/css/historial.css}" rel="stylesheet" type="text/css">
 </head>
 
@@ -30,16 +30,16 @@
             <div class="historial">
                 <table>
                     <tr>
-                        <th>ID</th>
-                        <th>ELEMENTO</th>
-                        <th>TIPO</th>
-                        <th>LARGO</th>
-                        <th>ANCHO</th>
-                        <th>ALTO</th>
-                        <th>CANTIDAD</th>
-                        <th>AREA UNITARIA</th>
-                        <th>AREA TOTAL</th>
-                        <th>MODIFICAR</th>
+                        <th th:text="'ID'"></th>
+                        <th th:text="'ELEMENTO'"></th>
+                        <th th:text="'TIPO'"></th>
+                        <th th:text="'LARGO'"></th>
+                        <th th:text="'ANCHO'"></th>
+                        <th th:text="'ALTO'"></th>
+                        <th th:text="'CANTIDAD'"></th>
+                        <th th:text="'AREA UNITARIA'"></th>
+                        <th th:text="'AREA TOTAL'"></th>
+                        <th th:text="'MODIFICAR'"></th>
                     </tr>
                     <tr th:each="figuras : ${listaFiguras}">
                         <td th:text="${figuras.id}"></td>
@@ -53,7 +53,7 @@
                         <td th:text="${figuras.areaTotal}  + ' ' + 'm3'"></td>
                         <td>
                             <a th:href="@{editar/elemento/{id} (id=${figuras.id})}">Editar</a>
-                            <a th:href="@{/historial/eliminar/{id}(id=${figuras.id})}">Eliminar</a>
+                            <a th:href="@{/eliminar/elemento/{id}(id=${figuras.id})}">Eliminar</a>
                         </td>
                     </tr>
                 </table>

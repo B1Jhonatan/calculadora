@@ -5,6 +5,7 @@ import com.jaimes.calculadora.app.services.Figura2DService;
 import com.jaimes.calculadora.app.services.Figura3DService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,22 +19,32 @@ public class HistorialController {
 
     private final Figura3DService figura3DService;
     private final Figura2DService figura2DService;
+    private final JdbcTemplate jdbcTemplate;
 
     @Autowired
-    public HistorialController(Figura2DService figura2dService, Figura3DService figura3dService){
+    public HistorialController(Figura2DService figura2dService, Figura3DService figura3dService, JdbcTemplate jdbcTemplate){
         this.figura2DService = figura2dService;
         this.figura3DService = figura3dService;
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
+    @GetMapping("/historial2")
+    public String listarElemento(Model model){
+        String sql = "SHOW TABLES";
+        List<String> tablas = jdbcTemplate.queryForList(sql, String.class);
+        model.addAttribute("listaElementos", tablas);
+        return "shistorial";
     }
 
     @GetMapping("/historial")
-    public String listaFiguras(String tipo, Model model){
+    public String listaFigura(Model model){
         List<Figura3D> figuras = figura3DService.obtenerTodas3d();
         model.addAttribute("listaFiguras", figuras);
         return "historial";
     }
 
     //Eliminar Figuras en el historial
-    @GetMapping("/historial/eliminar/{id}")
+    @GetMapping("/eliminar/elemento/{id}")
     public String eliminarFigura(@PathVariable Integer id){
         figura3DService.eliminarFigura3d(id);
         return "redirect:/historial";
