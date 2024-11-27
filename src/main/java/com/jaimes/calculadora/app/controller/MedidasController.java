@@ -40,7 +40,7 @@ public class MedidasController {
     @PostMapping({"/zapatas", "/pedestales", "/vigas", "/columnas"})
     public String Cubico(HttpServletRequest request, @ModelAttribute Figura3D medidas, Model model) {
         //Guarda los datos puestos en el formulario del HTML
-        figura3DService.crearFigura(medidas);
+        figura3DService.crearFigura3d(medidas);
         operacion = "Area";
         nombre = request.getRequestURI();
         model.addAttribute("operacion", operacion);
