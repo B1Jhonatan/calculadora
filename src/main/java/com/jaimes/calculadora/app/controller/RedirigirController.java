@@ -9,8 +9,8 @@ import jakarta.servlet.http.HttpServletRequest;
 @Controller
 public class RedirigirController {
 
-    String operacion;
-    String nombre;
+    private String operacion;
+    private String nombre;
 
     @GetMapping({"/zapatas", "/pedestales", "/vigas", "/columnas"})
     public String cubico(HttpServletRequest request, Model model){

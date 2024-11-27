@@ -2,8 +2,8 @@ package com.jaimes.calculadora.app.controller;
 
 import com.jaimes.calculadora.app.entity.Figura2D;
 import com.jaimes.calculadora.app.entity.Figura3D;
-import com.jaimes.calculadora.app.services.implement.CuadradoService;
-import com.jaimes.calculadora.app.services.implement.Figura3DService;
+import com.jaimes.calculadora.app.services.Figura2DService;
+import com.jaimes.calculadora.app.services.Figura3DService;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -16,19 +16,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class MedidasController {
 
+    private final Figura3DService figura3DService;
+    private final Figura2DService figura2DService;
+    
     @Autowired
-    private Figura3DService figura3DService;
+    public MedidasController(Figura2DService figura2dService, Figura3DService figura3dService){
+        this.figura2DService = figura2dService;
+        this.figura3DService = figura3dService;
+    }
 
-    @Autowired
-    private CuadradoService cuadradoService;
-
-    String nombre;
-    String operacion;
+    private String nombre;
+    private String operacion;
 
     //Guardar la figura en la DDBB
     @PostMapping("/cuadrado")
     public String Cuadrado(@ModelAttribute Figura2D medidas, Model model) {
-        cuadradoService.crearCuadrado(medidas);
+        figura2DService.crearFigura2d(medidas);
         model.addAttribute("accion", "/cuadrado");
         return "cuadrado";   
     }

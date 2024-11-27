@@ -17,23 +17,24 @@ public class Figura2D implements Calcular {
     private Integer id;
 
     @Basic
+    private String elemento;
+    private String tipo;
     private Double largo;
     private Double ancho;
     private Integer cantidad;
-    private Double resultado;
+    private Double areaUnidad;
+    private Double areaTotal;
 
     @Override
     public double calcular() {
 
         double resultado;
 
-        if (cantidad == 0) {
-            resultado = largo * ancho;
-        } else {
-            resultado = largo * ancho * cantidad;
-        }
+        resultado = largo * ancho;
+        setAreaUnidad(resultado);
 
-        setResultado(resultado);
+        resultado = largo * ancho * cantidad;
+        setAreaTotal(resultado);
 
         return resultado;
 
