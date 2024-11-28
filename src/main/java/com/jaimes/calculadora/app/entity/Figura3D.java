@@ -31,7 +31,7 @@ public class Figura3D implements Calcular {
     private Double areaTotal;
 
     @Override
-    public double calcular() {
+    public void calcular() {
 
         double resultado;
 
@@ -40,8 +40,6 @@ public class Figura3D implements Calcular {
 
         resultado = largo * ancho * alto * cantidad;
         setAreaTotal(resultado);
-
-        return resultado;
 
     }
 

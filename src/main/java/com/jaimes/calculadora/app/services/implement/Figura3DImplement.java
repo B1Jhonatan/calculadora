@@ -12,8 +12,12 @@ import java.util.List;
 @Service
 public class Figura3DImplement implements Figura3DService {
 
+    private final Figura3DRepository figura3dRepository;
+
     @Autowired
-    private Figura3DRepository figura3dRepository;
+    private Figura3DImplement(Figura3DRepository figura3dRepository){
+        this.figura3dRepository = figura3dRepository;
+    }
 
     //Obtener todas las figuras3D
     @Override

@@ -34,6 +34,7 @@ public class HistorialController {
     public String listarElemento(Model model){
         //Variable para enviar Query a MySQL
         String sql = "SHOW TABLES";
+        Integer id = 2123;
         //Almacenar los elementos en una lista
         List<String> tablas = jdbcTemplate.queryForList(sql, String.class);
         //Mostrar la lista en el modelo

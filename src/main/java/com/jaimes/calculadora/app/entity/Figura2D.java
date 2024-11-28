@@ -26,7 +26,7 @@ public class Figura2D implements Calcular {
     private Double areaTotal;
 
     @Override
-    public double calcular() {
+    public void calcular() {
 
         double resultado;
 
@@ -35,8 +35,6 @@ public class Figura2D implements Calcular {
 
         resultado = largo * ancho * cantidad;
         setAreaTotal(resultado);
-
-        return resultado;
 
     }
 }

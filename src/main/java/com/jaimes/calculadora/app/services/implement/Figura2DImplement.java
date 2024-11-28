@@ -12,8 +12,12 @@ import java.util.List;
 @Service
 public class Figura2DImplement implements Figura2DService {
 
+    private final Figura2DRepository figura2dRepository;
+
     @Autowired
-    private Figura2DRepository figura2dRepository;
+    private Figura2DImplement(Figura2DRepository figura2dRepository){
+        this.figura2dRepository = figura2dRepository;
+    }
 
     @Override
     public List<Figura2D> obtenerTodas2d() {
