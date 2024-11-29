@@ -23,12 +23,13 @@
 }
 
 .contenedor h1 {
-    padding: 50px;
+    padding: 40px;
 }
 
 .chistorial {
-    display: flex;
+    display: grid;
     width: 50%;
+    grid-template-columns: 25% 25% 25% 25%;
     background-color: aqua;
 }
 

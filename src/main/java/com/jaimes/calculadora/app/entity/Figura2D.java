@@ -31,9 +31,11 @@ public class Figura2D implements Calcular {
         double resultado;
 
         resultado = largo * ancho;
+        resultado = Math.round(resultado * 100.0) / 100.0;
         setAreaUnidad(resultado);
 
         resultado = largo * ancho * cantidad;
+        resultado = Math.round(resultado * 100.0) / 100.0;
         setAreaTotal(resultado);
 
     }
