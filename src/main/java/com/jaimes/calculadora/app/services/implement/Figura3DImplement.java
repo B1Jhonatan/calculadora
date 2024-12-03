@@ -3,10 +3,12 @@ package com.jaimes.calculadora.app.services.implement;
 import com.jaimes.calculadora.app.entity.Figura3D;
 import com.jaimes.calculadora.app.repository.Figura3DRepository;
 import com.jaimes.calculadora.app.services.Figura3DService;
+import com.jaimes.calculadora.app.services.implement.clases.Cantidades;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -65,5 +67,31 @@ public class Figura3DImplement implements Figura3DService {
     @Override
     public void eliminarFigura3d(Integer id) {
         figura3dRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Cantidades> cantidades3d() {
+
+        List<Figura3D> elementos = figura3dRepository.findAll();
+        List<Cantidades> areas = new ArrayList<>();
+
+        for(Figura3D elemento: elementos){
+            
+            double areaUnidad = elemento.getAreaUnidad();
+            double areaTotal = elemento.getAreaTotal();
+
+            Cantidades cantidades1 = new Cantidades(areaUnidad);
+            Cantidades cantidades2 = new Cantidades(areaTotal);
+
+            cantidades1.cantidades();
+            cantidades2.cantidades();
+
+            areas.add(cantidades1);
+            areas.add(cantidades2);
+    
+        }
+
+        return areas;
+
     }
 }

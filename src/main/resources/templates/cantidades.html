@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="'CO - Historial' + @{elemento}"></title>
+    <link th:href="@{/css/historial.css}" rel="stylesheet" type="text/css">
+    <script th:src="@{/js/mhistorial.js}"></script>
+</head>
+
+<body>
+    <div class="pantalla">
+        <div class="lista">
+            <h1><a th:href="@{/}">Elementos</a></h1>
+            <ul>
+                <li><a th:href="@{/zapatas}" class="menu">Zapatas</a></li>
+                <li><a th:href="@{/pedestales}" class="menu">Pedestales</a></li>
+                <li><a th:href="@{/vigas}" class="menu">Vigas</a></li>
+                <li><a th:href="@{/columnas}" class="menu">Columnas</a></li>
+                <li><a th:href="@{/placas}" class="menu">Placas</a></li>
+                <li><a th:href="@{/muros}" class="menu">Muros</a></li>
+                <li><a th:href="@{/pisos}" class="menu">Pisos</a></li>
+                <li><a th:href="@{/estuco}" class="menu">Estuco</a></li>
+                <li><a th:href="@{/cantidades}" class="menu">Cantidades</a></li>
+                <li><a th:href="@{/historial}" class="menu">Historial</a></li>
+            </ul>
+        </div>
+        <div class="contenedor">
+            <h1>CALCULADORA DE OBRA</h1>
+            <div id="cantidades">
+                <table>
+                    <tr>
+                        <th th:text="'AREA'"></th>
+                        <th th:text="'CEMENTO'"></th>
+                        <th th:text="'ARENA'"></th>
+                        <th th:text="'TRITURADO'"></th>
+                    </tr>
+                    <tr th:each="elementos : ${cantidades}">
+                        <td th:text="${elementos.area}"></td>
+                        <td th:text="${elementos.cemento}"></td>
+                        <td th:text="${elementos.arena}"></td>
+                        <td th:text="${elementos.triturado}"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

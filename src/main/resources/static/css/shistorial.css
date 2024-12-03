@@ -30,7 +30,6 @@
     display: grid;
     width: 50%;
     grid-template-columns: 25% 25% 25% 25%;
-    background-color: aqua;
 }
 
 .historial {
