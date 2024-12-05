@@ -76,19 +76,14 @@ public class Figura3DImplement implements Figura3DService {
         List<Cantidades> areas = new ArrayList<>();
 
         for(Figura3D elemento: elementos){
-            
             double areaUnidad = elemento.getAreaUnidad();
             double areaTotal = elemento.getAreaTotal();
-
             Cantidades cantidades1 = new Cantidades(areaUnidad);
             Cantidades cantidades2 = new Cantidades(areaTotal);
-
             cantidades1.cantidades();
             cantidades2.cantidades();
-
             areas.add(cantidades1);
             areas.add(cantidades2);
-    
         }
 
         return areas;
